@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Stefano & Friends</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    background:#080808;
+    color:white;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+}
+
+#game{
+    width:100%;
+    max-width:430px;
+    min-height:100vh;
+    overflow:hidden;
+    background:#111;
+}
+
+.screen{
+    min-height:100vh;
+    padding:30px 22px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hidden{
+    display:none !important;
+}
+
+/* SCHERMATA INIZIALE */
+
+.home{
+    background:
+        radial-gradient(circle at 50% 25%,#3d4658 0%,#151922 45%,#090a0d 100%);
+}
+
+.logo{
+    font-size:48px;
+    line-height:.9;
+    font-weight:1000;
+    letter-spacing:-3px;
+    text-shadow:5px 5px 0 #000;
+    margin-bottom:15px;
+}
+
+.logo span{
+    color:#ffd43b;
+}
+
+.subtitle{
+    color:#bfc5d0;
+    font-size:16px;
+    font-weight:700;
+    margin-bottom:40px;
+}
+
+/* BOTTONI */
+
+button{
+    width:100%;
+    max-width:320px;
+    padding:17px 15px;
+    margin:7px 0;
+    border:3px solid #050505;
+    border-radius:16px;
+    background:#ffd43b;
+    color:#111;
+    font-size:19px;
+    font-weight:900;
+    box-shadow:0 5px 0 #000;
+}
+
+button:active{
+    transform:translateY(4px);
+    box-shadow:0 1px 0 #000;
+}
+
+.dark{
+    background:#303642;
+    color:white;
+}
+
+/* MENU */
+
+.menu{
+    background:
+        linear-gradient(160deg,#171b25,#090b10);
+}
+
+.title{
+    font-size:35px;
+    margin:0 0 25px;
+    font-weight:950;
+    text-shadow:3px 3px #000;
+}
+
+.days{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.day{
+    margin:0;
+    max-width:none;
+    font-size:16px;
+}
+
+/* GIORNO */
+
+.day-screen{
+    justify-content:flex-start;
+    padding-top:55px;
+    background:
+        linear-gradient(160deg,#202735,#0c0e13);
+}
+
+.scene{
+    width:100%;
+    min-height:330px;
+    padding:25px;
+    margin-bottom:20px;
+    border-radius:22px;
+    border:2px solid #444c5c;
+    background:rgba(0,0,0,.35);
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+}
+
+.scene-number{
+    color:#ffd43b;
+    font-size:15px;
+    font-weight:900;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+
+.scene h2{
+    font-size:28px;
+    margin:0 0 18px;
+}
+
+.scene p{
+    color:#e1e4ea;
+    line-height:1.55;
+    font-size:17px;
+}
+
+.info{
+    margin-top:20px;
+    color:#7f8795;
+    font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="game">
+
+<!-- SCHERMATA INIZIALE -->
+
+<section id="home" class="screen home">
+
+    <div class="logo">
+        STEFANO<br>
+        <span>& FRIENDS</span>
+    </div>
+
+    <div class="subtitle">
+        La nostra storia sta per iniziare 🎮
+    </div>
+
+    <button onclick="showScreen('menu')">
+        ▶ GIOCA
+    </button>
+
+</section>
+
+
+<!-- MENU -->
+
+<section id="menu" class="screen menu hidden">
+
+    <h1 class="title">
+        MENU
+    </h1>
+
+    <div class="days">
+
+        <button class="day" onclick="openDay(1)">
+            GIORNO 1
+        </button>
+
+        <button class="day" onclick="openDay(2)">
+            GIORNO 2
+        </button>
+
+        <button class="day" onclick="openDay(3)">
+            GIORNO 3
+        </button>
+
+        <button class="day" onclick="openDay(4)">
+            GIORNO 4
+        </button>
+
+        <button class="day" onclick="openDay(5)">
+            GIORNO 5
+        </button>
+
+        <button class="day" onclick="openDay(6)">
+            GIORNO 6
+        </button>
+
+    </div>
+
+    <button class="dark" onclick="showScreen('home')">
+        ← INDIETRO
+    </button>
+
+    <div class="info">
+        Stefano & Friends · Versione 1.0
+    </div>
+
+</section>
+
+
+<!-- GIORNO -->
+
+<section id="day" class="screen day-screen hidden">
+
+    <h1 id="dayTitle" class="title">
+        GIORNO 1
+    </h1>
+
+    <div class="scene">
+
+        <div id="sceneNumber" class="scene-number">
+            Giorno 1
+        </div>
+
+        <h2 id="sceneTitle">
+            La storia continua...
+        </h2>
+
+        <p id="sceneText">
+            Qui inizieremo a inserire la storia vera,
+            le immagini dei personaggi, i dialoghi,
+            le scelte e i mini-giochi.
+        </p>
+
+    </div>
+
+    <button onclick="showScreen('menu')">
+        ← TORNA AL MENU
+    </button>
+
+</section>
+
+</div>
+
+
+<script>
+
+const giorni = {
+
+    1:{
+        titolo:"GIORNO 1",
+        scena:"L'inizio",
+        testo:"Il nostro viaggio comincia qui. Questa schermata sarà sostituita con la scena e i dialoghi definitivi che abbiamo già preparato."
+    },
+
+    2:{
+        titolo:"GIORNO 2",
+        scena:"Il secondo giorno",
+        testo:"Qui inseriremo la seconda giornata della storia, con le nostre grafiche e le interazioni."
+    },
+
+    3:{
+        titolo:"GIORNO 3",
+        scena:"Il terzo giorno",
+        testo:"Qui entreranno la scena, i personaggi e il mini-gioco del Giorno 3."
+    },
+
+    4:{
+        titolo:"GIORNO 4",
+        scena:"Il quarto giorno",
+        testo:"La quarta giornata del nostro viaggio sarà costruita qui."
+    },
+
+    5:{
+        titolo:"GIORNO 5",
+        scena:"Il quinto giorno",
+        testo:"Qui inseriremo la quinta giornata e tutte le sue scene."
+    },
+
+    6:{
+        titolo:"GIORNO 6",
+        scena:"Il sesto giorno",
+        testo:"Qui arriveranno le scene definitive del Giorno 6."
+    }
+
+};
+
+
+function showScreen(id){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen=>{
+            screen.classList.add("hidden");
+        });
+
+    document
+        .getElementById(id)
+        .classList.remove("hidden");
+
+    window.scrollTo(0,0);
+}
+
+
+function openDay(numero){
+
+    const giorno = giorni[numero];
+
+    document.getElementById("dayTitle").textContent =
+        giorno.titolo;
+
+    document.getElementById("sceneNumber").textContent =
+        giorno.titolo;
+
+    document.getElementById("sceneTitle").textContent =
+        giorno.scena;
+
+    document.getElementById("sceneText").textContent =
+        giorno.testo;
+
+    showScreen("day");
+}
+
+</script>
+
+</body>
+</html>
